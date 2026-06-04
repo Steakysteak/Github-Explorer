@@ -176,9 +176,8 @@ Experience the live application here: **[github-explorer-sandy-nu.vercel.app](ht
 
 ## 💻 Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router) for hybrid rendering and API routes.
-- **Library**: [React 19](https://react.dev/) for component-driven UI.
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) for modern, utility-first responsive design.
+- **Framework**: [Next.js](https://nextjs.org/) (App Router) for hybrid rendering and API routes.
+- **Library**: recharts
 - **Analytics**: [Recharts](https://recharts.org/) for interactive language distribution charts.
 - **Language**: [TypeScript](https://www.typescriptlang.org/) for end-to-end type safety.
 - **State & Persistence**: Custom Hooks + LocalStorage for history and search state management.
