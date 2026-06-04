@@ -2,6 +2,9 @@
 
 A simple, fast, and modern way to explore GitHub profiles and repositories.
 
+Experience the live application here: **[github-explorer-sandy-nu.vercel.app](https://github-explorer-sandy-nu.vercel.app/)**
+
+
 ## 🚀 Quick Start
 
 1. **Install dependencies**
@@ -69,18 +72,43 @@ A simple, fast, and modern way to explore GitHub profiles and repositories.
 
 ### `GET /api/github`
 
-Fetches user profile and repositories.
+Fetches comprehensive GitHub user profile data and their public repositories.
 
-**Parameters:**
-- `username` (required): GitHub username.
-- `page` (optional): Page number (default: 1).
+- **Method**: `GET`
+- **Path**: `/api/github`
+- **Request Body**: None (Uses query parameters)
+- **Parameters**:
+  - `username` (required): The GitHub handle to search for.
+  - `page` (optional): Page number for repository pagination (default: 1).
 
-**Sample Response:**
+- **Response Shape**:
 ```json
 {
-  "profile": { "name": "...", "avatarUrl": "...", "bio": "..." },
-  "repositories": [...],
-  "fromCache": true
+  "profile": {
+    "login": "string",
+    "name": "string",
+    "avatarUrl": "string",
+    "bio": "string",
+    "location": "string",
+    "company": "string",
+    "followers": number,
+    "following": number,
+    "publicReposCount": number,
+    "htmlUrl": "string"
+  },
+  "repositories": [
+    {
+      "id": number,
+      "name": "string",
+      "description": "string",
+      "starCount": number,
+      "forkCount": number,
+      "language": "string",
+      "htmlUrl": "string",
+      "lastUpdated": "ISO-8601 string"
+    }
+  ],
+  "fromCache": boolean
 }
 ```
 
@@ -142,13 +170,59 @@ github-explorer/
 
 ```
 
-## 🚀 Deployment
+## 🔗 Live Demo
 
-The easiest way to deploy is using [Vercel](https://vercel.com):
+Experience the live application here: **[github-explorer-sandy-nu.vercel.app](https://github-explorer-sandy-nu.vercel.app/)**
 
-1. Connect your repository.
-2. Add your `GITHUB_TOKEN` to environment variables.
-3. Deploy.
+## 💻 Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router) for hybrid rendering and API routes.
+- **Library**: [React 19](https://react.dev/) for component-driven UI.
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) for modern, utility-first responsive design.
+- **Analytics**: [Recharts](https://recharts.org/) for interactive language distribution charts.
+- **Language**: [TypeScript](https://www.typescriptlang.org/) for end-to-end type safety.
+- **State & Persistence**: Custom Hooks + LocalStorage for history and search state management.
+
+## 🛠️ How to Run Locally
+
+If you have **Node.js** installed, follow these steps to run the project locally:
+
+1. **Clone & Enter Directory**
+   ```bash
+   git clone <your-repo-url>
+   cd github-explorer
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment** (Optional but recommended)
+   Create a `.env.local` file to increase GitHub API rate limits:
+   ```env
+   GITHUB_TOKEN=your_personal_access_token
+   ```
+
+4. **Start Development Server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🔮 Next Steps & Future Roadmap
+
+**What was prioritized:**
+- Core search experience and responsive dashboard.
+- Backend proxying with intelligent caching and rate limiting.
+- Clean, maintainable architecture (Controller-Service pattern).
+
+**What's next:**
+- **Automated Testing**: Implement unit tests (Jest) for services and E2E tests (Playwright) for critical paths.
+- **Advanced Filtering**: Add ability to filter repositories by language or sort by multiple criteria.
+- **Infinite Scrolling**: Replace the "Load More" button with a seamless scroll experience.
+- **Comparison Tool**: Allow users to compare two GitHub profiles side-by-side.
+- **Dark/Light Mode**: Full theme toggle support beyond the current dark-first aesthetic.
 
 ---
 Built for speed and simplicity.
